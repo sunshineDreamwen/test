@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var a = 5;
+			//window.a = 4;
+			//alert(window.a);
+			function fn() {
+				var b = 6;
+			}
+			fn();
+			try{
+				alert(b);
+			}catch(e) {
+				console.log(e.message);
+			}finally{
+				
+			}
+			/* 
+				ES5中:
+					1.不存在块级作用域{}
+						if，for，while,switch
+						这些语句块不存在块级
+						作用域
+					2.只存在全局和局部作用域
+						
+			*/
+			//变量的扩展
+			//let,const
+			
+			/*
+				var声明变量的缺点:
+					1.可以重复声明
+					2.不能限制修改
+					3.没有块级作用域
+					{
+						
+					}
+				特点:
+					有变量提升的功效
+			*/
+			//var a = 1;
+			//a = 100;
+			//var a = 2;
+			//alert(a);
+			
+//			var x;
+//			//alert(x);
+//			if(1) {
+//				 x = 3;
+//			}
+//			//alert(x);
+//			{
+//				var t = 99;
+//			}
+//			alert(t);
+			var y;
+			alert(y);
+			y = 2;
+		</script>
+	</body>
+</html>

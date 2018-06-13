@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				Promise总结:
+				1.用途:
+					解决异步问题
+				2.用法
+					1.单个异步操作:
+						let p = new Promise(function(resolve,reject){
+							//异步操作
+							//....此处省略很多行代码
+							
+							//成功了，执行resolve(成功的数据)
+							
+							//失败了,执行reject(错误信息)
+						});
+					2.多个异步操作:
+						Promise.all([p1,p2,...]).then(function(allResult){
+							//全部成功
+							allResult就是所有你需要的数据,是个数组
+						},function(errr) {
+							//至少有一个失败了
+						});
+					3.封装了一个完整版的promise风格的ajax
+					
+					4.jquery3.x版本,$.ajax()方法返回的结果就是promise对象
+					可以使用Promise.all([]).then(function(){
+						
+					},function(){
+						
+					})
+			*/
+		</script>
+	</body>
+</html>

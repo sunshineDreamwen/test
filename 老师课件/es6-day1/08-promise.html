@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="jquery.js"></script>
+
+		<script>
+			/*
+				Promise
+					等待
+				用途:
+					用来解决异步处理的
+				
+			*/
+			$.ajax({
+				url:"data/banner.txt",
+				success(msg) {
+					$.ajax({
+						url:"data/nav.txt",
+						success(msg) {
+							$.ajax({
+								url:"data/1.txt",
+								success(msg) {
+									
+								}
+							});
+						}
+					});
+				}
+			});
+			let banner = $.ajax({url:"data/banner.txt"});
+			let nav = $.ajax({url:"data/nav.txt"});
+		</script>
+
+	</body>
+</html>

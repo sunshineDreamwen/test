@@ -1,0 +1,8 @@
+{
+	"code":1,
+	"banner":[
+		{
+			"imgUrl":"https://www.taobao.com/data/banner/1.jpg"
+		}
+	]
+}

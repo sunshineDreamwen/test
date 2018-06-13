@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				1.let,const与var
+				
+				2.try-catch-finally
+					捕获异常,增强代码的
+					健壮性
+				3.字符串的扩展
+					模版: `${变量名}`
+					方法:
+						startsWith
+						endsWith
+				4.数组的扩展
+					some
+					let bool = arr.some(function(value,index,arr){
+						return 条件;
+					});
+					every
+					let bool = arr.some(function(value,index,arr){
+						return 条件;
+					});
+					forEach  * 
+						arr.forEach(function(value,index,arr) {
+							
+						});
+					filter   *
+						arr.filter(function(value,index,arr){
+							return 条件;
+							会把条件结果为true放入返回值里面去,
+							返回值是个数组
+							
+						})
+					map      *
+						arr.map(function(item,index,arr){
+							return 表达式
+							//return item * item;
+						});
+				
+				
+				
+			*/
+			let aStudent = [
+				{
+					name:"steven",
+					age: 22
+				},
+				{
+					name:"潘永超",
+					age: 20
+				},{
+					name:"徐振飞",
+					age: 15
+				}
+			];
+			
+			let result = aStudent.some(function(item){
+				return item.age >= 18;
+			});
+			//alert(result? 'Yes':"No")
+			
+			let goodsList = [
+				{
+					title:"衬衣",
+					des:"dfndslkfldksfdgdsfgngsdfgdf",
+					price:199,
+					address:"浙江杭州",
+					seller:"xxx旗舰店",
+					sales:234325,
+					isPosted:false
+					
+				},
+				{
+					title:"衬衣",
+					des:"dfndslkfldksfdgdsfgngsdfgdf",
+					price:49,
+					address:"北京",
+					seller:"xxx旗舰店",
+					sales:7521,
+					isPosted:false
+					
+				},
+				{
+					title:"衬衣",
+					des:"dfndslkfldksfdgdsfgngsdfgdf",
+					price:98,
+					address:"广州",
+					seller:"xxx旗舰店",
+					sales:88905,
+					isPosted:false
+					
+				},
+				{
+					title:"衬衣",
+					des:"dfndslkfldksfdgdsfgngsdfgdf",
+					price:299,
+					address:"上海",
+					seller:"xxx旗舰店",
+					sales:2343325,
+					isPosted:true
+					
+				}
+				
+			];
+			
+			let resultArr = goodsList.filter(function(item){
+				//return item.price >= 100;
+				return item.isPosted;
+			});
+			console.log(resultArr)
+			
+		</script>
+	</body>
+</html>

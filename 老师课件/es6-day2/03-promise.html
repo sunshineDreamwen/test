@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="jquery.js"></script>
+		<script>
+			/*
+				Promise  
+					承诺
+					等待
+				
+				用来解决异步问题
+				
+				异步:
+					优点:体验好,性能高,不卡页面
+					缺点: 代码书写起来复杂
+				同步:
+					优点:代码简单
+					缺点:体验差,性能低,卡页面
+					
+					
+				
+				
+			*/
+			
+			/*
+				ajax	请求,典型的异步
+				1.传统的ajax请求
+					有这么个需求:
+					1个需要需要多次请求数据,
+					
+				2.有了promise之后的请求
+					
+				写代码像同步一样简单,代码的性能和异步一样高
+				
+					
+			*/
+			$.ajax({
+				url:"data/hot_items.txt",
+				success:function(hot_items){
+					$.ajax({
+						url:"data/banner.txt",
+						success:function(banner){
+							$.ajax({
+								url:"data/side_bar.txt",
+								success:function(side_bar){
+									
+								}
+							})
+						}
+					})
+				}
+			});
+			let banner = $.ajax({
+				url:"data/banner.txt",
+			});
+			let hotItems = $.ajax({
+				url:"data/hot_items.txt",
+			});
+			let sieBar = $.ajax({
+				url:"data/side_bar.txt",
+			});
+		</script>
+	</body>
+</html>

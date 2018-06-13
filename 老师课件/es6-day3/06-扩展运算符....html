@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				扩展运算符:
+					...
+				1.合并数组
+				
+				2.解构数组
+				
+				
+				3.解构字符串
+				
+				
+				4. 	let arr5 = [1,2];
+					let arr6 = arr5;
+						将arr5地址给了arr6
+					let arr6 = [...arr5];
+						将arr5复制了一份给arr6
+				
+			*/
+			//1.数组合并
+			//let arr = [3,4,5];
+			//arr = [1,2].concat(arr);
+			//console.log(arr);
+			//console.log([1,2,...arr]);
+			
+			
+			let arr = ['a','b','c','d'];
+			//let a = arr[0];
+			//let b = arr.slice(1);
+			//let [a,...b] = ['a','b','c','d'];
+			//console.log(a,b);
+			//let arr2 = "hello".split("");
+			//console.log(arr2);
+			//console.log(arr2);
+			let [...arr3] = ['h','e','l','l','o'];
+			console.log(arr3);
+			
+			
+			let arr4 = [45,21,12,56,98];
+			
+			//1.
+			let temMaxVal = arr4[0];
+			let temMinVal = arr4[0];
+			//1
+			for(let i = 1,length = arr4.length;i < length; i++) {
+				if(arr4[i] > temMaxVal) {
+					temMaxVal = arr4[i];
+				}
+				if(arr4[i] < temMinVal) {
+					temMinVal = arr4[i];
+				}
+			}
+			console.log(	`最大值是:${temMaxVal},最小值是:${temMinVal}`);
+			//2.排序
+			arr4.sort(function(a,b) {
+				return a - b;
+			});
+			//alert(`最小值${arr4[0]}`);
+			//alert(`最小值${arr4[arr4.length - 1]}`)
+			
+			//3.Math.max()  Math.min()
+			
+			let max = Math.max.apply(null,arr4);
+			let min = Math.min.apply(null,arr4);
+			//console.log(max,min);
+			
+			//4.  ...
+			let Max = Math.max(...arr4);
+			let Min = Math.min(...arr4);
+			console.info(Max,Min);
+			
+			let arr5 = [1,2,3];
+			//arr6.pop();
+			
+			//1.JSON.parse  JSON.stringify
+			//let arr6 = JSON.stringify(arr5)
+			//arr6 = JSON.parse(arr6);//[1,2,3]
+			//arr6.push(4);
+			//console.log(arr6);//[1,2,3,4]
+			//console.log(arr5);//[1,2,3]
+			
+			let arr6 = arr5;
+			let arr6 = [...arr5];
+			arr6.push(100);
+			console.info(arr6);
+			console.log(arr5);
+		</script>
+	</body>
+</html>

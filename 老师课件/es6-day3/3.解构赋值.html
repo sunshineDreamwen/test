@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				解构赋值:
+					1.等号两边结构必须一样
+					2.等号右边必须是个东西
+					3.声明和赋值必须在同一句话内完成
+			*/
+			//let arr = [4,5,6];
+			/*
+			let a = arr[0];
+			let b = arr[1];
+			let c = arr[2];
+			*/
+
+			//let [a,b,c] = arr;
+			//console.log(a,b,c);
+			
+			//let {a:a,b:b} = {a:1,b:2};
+			//console.log(a,b);
+			//let [{a},[[b,c,d]],num,str] = [{a:1},[[1,2,3]],4,'abc'];
+			//console.info(a,b,c,d,num,str);
+			function fn() {
+				var flag;
+				$.ajax({
+					url:"http://localhost/banner",
+					success:function(){
+						flag = true;
+					},
+					error:function(){
+						flag = false;
+					}
+				});
+				return flag;
+			}
+		</script>
+	</body>
+</html>

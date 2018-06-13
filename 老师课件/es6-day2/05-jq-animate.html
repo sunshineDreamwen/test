@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.div1 {
+				position: absolute;
+				top:50px;
+				left:8px;
+				width: 200px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<button id='play'>div1的play</button>
+		<button id='stop'>div1的stop</button>
+		
+		<div class="div1">
+			
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			let $div = $('.div1');
+			let currentLeft = $div.offset().left + 500;
+			let currentTop = $div.offset().top + 300;
+			$('#play').click(function(){
+				$div.animate({
+					left:currentLeft,
+				},function(){
+					$div.animate({
+						top:currentTop
+					},function(){
+						$div.animate({
+							left:0
+						},function(){
+							$div.animate({
+								top:50
+							});
+						})
+					})
+				})
+			});
+			$("#stop").click(function(){
+				$div.stop();
+				currentLeft = $div.offset().left;
+				currentTop = $div.offset().top;
+				
+			})
+		</script>
+	</body>
+</html>

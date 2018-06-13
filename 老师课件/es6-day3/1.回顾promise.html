@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="login">
+		</div>
+		<script>
+			/*
+				回顾Promise
+					1.解决异步问题
+					
+					2.本质:
+						把异步写法变成同步,
+						实质还是异步的
+			*/
+//			$.ajax({
+//				type:"get/post",
+//				url:'',
+//				data:{
+//					
+//				},
+//				success:function(){
+//					
+//				},
+//				error:function(){
+//					
+//				}
+//			});
+			function promiseAjax(json) {
+				let type = json.type || 'get';
+				let url = json.url;
+				let params =  json.data || {};
+				let str = '';
+				for(let k in params) {
+					str += k+'='+parmas[k]+'&';
+				}
+				return new Promise(function(resolve,reject){
+					let xhr = new XMLHttpRequest();
+					
+					if(type.toLowerCase() === 'get') {
+						xhr.open('get',url+"?"+str+"_time_="+Date.now(),true);
+						xhr.send();
+					}else if(type.toLowerCase() === 'post') {
+						xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+						xhr.send(str.substring(0,str.lastIndexOf("&")));
+					}
+					xhr.onreadystatechange = function(){
+						if(this.readyState === 4){
+							if(this.status >= 200 && this.status < 300 || this.status === 304) {
+								try{
+									let response = JSON.parse(this.responseText);
+									resolve(response);
+								}catch(e){
+									cosnole.info(e.message);
+									resolve(this.responseText);
+								}
+
+							}else {
+								let error = new Error();
+								error.status = this.status;
+								reject(error);
+							}
+						}
+					};
+				});
+			}
+			
+			promiseAjax({
+				type:"get",
+				url:"http://localhost:8080/login",
+				data:{
+					name:"zhangsan",
+					pass:123456
+				}
+			}).then(function(response){
+				console.log(response);
+			},function(error){
+				
+			});
+		</script>
+	</body>
+</html>

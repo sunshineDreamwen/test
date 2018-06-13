@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="login">
+		</div>
+		<script>
+			/*
+				回顾Promise
+					1.解决异步问题
+					
+					2.本质:
+						把异步写法变成同步,
+						实质还是异步的
+			*/
+//			$.ajax({
+//				type:"get/post",
+//				url:'',
+//				data:{
+//					
+//				},
+//				success:function(){
+//					
+//				},
+//				error:function(){
+//					
+//				}
+//			});
+			function promiseAjax(json) {
+				let type = json.type || 'get';
+				let url = json.url;
+				let params =  json.data || {};
+				let str = '';
+				for(let k in params) {
+					str += k+'='+params[k]+'&';
+				}
+				return new Promise(function(resolve,reject){
+					let xhr = new XMLHttpRequest();
+					if(type.toLowerCase() === 'get') {
+						xhr.open('get',url+"?"+str+"_time_="+Date.now(),true);
+						xhr.send();
+					}else if(type.toLowerCase() === 'post') {
+						xhr.open('post',url,true);
+						xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+
+						xhr.send(str.substring(0,str.lastIndexOf("&")));
+					}
+					xhr.onreadystatechange = function(){
+						if(this.readyState === 4){
+							if(this.status >= 200 && this.status < 300 || this.status === 304) {
+								let response;
+								try{
+									response = JSON.parse(this.responseText);
+								}catch(e){
+									response = this.responseText;
+									//console.info(e.message);
+								}finally{
+									resolve(response);
+								}
+							}else {
+								let error = new Error();
+								error.status = this.status;
+								reject(error);
+							}
+						}
+					};
+				});
+			}
+			
+//			promiseAjax({
+//				type:"get",
+//				url:"http://localhost/login.php",
+//				data:{
+//					name:"zhangsan",
+//					pass:123456
+//				}
+//			}).then(function(response){
+//				console.log(response);
+//			},function(error){
+//				console.log(error);
+//			});
+//			let p1 = promiseAjax({
+//				url:"data/1.txt"
+//			});
+//			let p2 = promiseAjax({
+//				url:"data/2.txt"
+//			});
+//			let p3 = promiseAjax({
+//				url:"data/333.txt"
+//			});
+			/*
+			all 所有/全部
+			Promise.all([p1,p2,p3]).then(function(allResult){
+				//console.log("全部请求成功");
+				console.dir(allResult);
+			},function(error){
+				alert("至少有一个失败了");
+			});
+			//console.log(1);
+			race 竞速
+			Promise.race([p1,p2,p3]).then(function(result){
+				console.log(result);
+			},function(error){
+				alert("至少有一个失败了");
+	
+			});
+			*/
+		</script>
+		<script src="jquery.js"></script>
+		<script>
+			Promise.all([$.ajax({
+				url:"data/1.txt"
+			}),$.ajax({
+				url:"data/2.txt"
+			})]).then(function(goudan){
+				console.log(goudan);
+			},function(dachui){
+				
+			});
+		</script>
+	</body>
+</html>

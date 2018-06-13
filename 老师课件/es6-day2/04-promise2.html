@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			function promiseAjax(url) {
+				return new Promise(function(resolve, reject) {
+					//resolve  成功的回调函数
+
+					//reject   失败的回调函数
+
+					//在这里面写异步代码
+					//1.先有一部手机
+					let xhr = new XMLHttpRequest();
+
+					//2.连接
+					xhr.open('get', url, true);
+
+					//3.发送
+					xhr.send();
+					//4.接收
+					xhr.onreadystatechange = function() {
+						if(this.readyState === 4) {
+							if(this.status >= 200 && this.status < 300 || this.status === 304) {
+								resolve(JSON.parse(this.responseText));
+							} else {
+								reject(this.status);
+							}
+						}
+					};
+				});
+			}
+			
+			Promise.all([promiseAjax("data/banner.txt"),promiseAjax("data/hot_items1.txt")]).then(function(allResult){
+				console.log(allResult);
+			},function(){
+				alert("至少有一个失败了");
+			})
+		</script>
+	</body>
+
+</html>

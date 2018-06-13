@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+				原生数组方法:
+					push
+					unshift
+					
+					pop
+					shift
+					
+					indexOf
+					lastIndexOf
+					includes
+					
+					splice
+					slice
+					
+					join
+					concat
+					
+					sort
+					reverse
+					
+					some
+						判断数组中是否有满足
+						条件的,若存在,返回true,
+						否则返回false
+					every
+						判断数组中每一项都满足
+						条件,若都满足返回true,
+						否则返回false
+					forEach
+						遍历数组,
+						类似for循环
+					map   *
+						映射    一一对应
+					filter *
+						过滤
+							要一部分,不要一部分
+					reduce  *
+					fill
+					find  
+					findIndex
+					
+					Arrayt.from
+					Array.of
+					Array.isArray
+					
+					
+					
+			*/
+			let arr = [1,2,3,4];
+			let result = arr.every
+			(function(item,index,arr) {
+					return item % 2 !== 0
+			});
+			//alert(result);
+			arr.forEach(function(item,index,arr) {
+				//console.log(item,index,arr);
+			});
+			let score = [59,44,88,61,100];
+			//let isPass = ['不及格','不及格','及格','及格','及格'];
+			let isPass = score.map(function(item) {
+				return item >= 60 ? "鸡哥":"不鸡哥";
+			});
+			console.log(isPass)
+			let fail = score.filter(function(item){
+//					if(item> 60) {
+//						return true;
+//					}else {
+//						return false;
+//					}
+				return item > 60;
+			});
+			console.log(fail);
+		</script>
+	</body>
+</html>

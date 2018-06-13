@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {	
+				margin: 0;
+				padding: 0;
+				list-style:none;
+			}
+			#tab_ctrl {
+				position: relative;
+				width: 400px;
+				height:300px;
+				background: #ddd;
+			}
+			#tab_ctrl .tab-list {
+				display: flex;
+			}
+			#tab_ctrl .tab-list span {
+				flex:1;
+				height:30px;
+				line-height: 30px;
+				text-align: center;
+			}
+			#tab_ctrl .tab-list span.active {
+				background: #f00;
+				color:#0f0;
+			}
+			#tab_ctrl ul li {
+				display: none;
+				position: absolute;
+				left:0;
+				top:30px;
+				width:100%;
+				height:270px;
+			}
+			#tab_ctrl ul li.active {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tab_ctrl">
+			<div class="tab-list">
+				<span class='active'>新闻</span>
+				<span>北工商</span>
+				<span>体育</span>
+			</div>
+			<ul>
+				<li class='active'>习近平访问山西</li>
+				<li>招生老师听取营销大会</li>
+				<li>金州勇士4:0横扫骑士,实现了4年3冠</li>
+			</ul>
+		</div>
+		<script>
+			var tabCtrl = document.getElementById('tab_ctrl');
+			var tabList = tabCtrl.querySelectorAll('.tab-list span');
+			var conList = tabCtrl.querySelectorAll('ul li');
+			var length = tabList.length;
+			var index = 0;//记录上一个tab的索引
+			for(var i = 0; i < length; i++) {
+				(function(i){
+					tabList[i].addEventListener('mouseenter',function(){
+						tabList[index].className = conList[index].className = '';
+						this.className = conList[i].className = 'active';
+						index = i;
+//						for(var j = 0; j <length;j++) {
+//							tabList[j].className = 
+//							conList[j].className = '';
+//						}
+						this.className = 
+						conList[i].className = 'active';
+					});
+				})(i);
+			}
+			//let存在块级作用域,在这里就相当于加了一个自执行函数
+			for(let i = 0; i < length; i++) {
+				tabList[i].addEventListener('mouseenter',function(){
+					for(var j = 0; j <length;j++)
+						tabList[j].className = conList[j].className = '';
+					this.className = conList[i].className = 'active';
+				});
+			}
+		</script>
+	</body>
+</html>
