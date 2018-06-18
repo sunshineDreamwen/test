@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script src="../js/jquery.js"></script>
+    <script>
+
+        function fn(callback) {
+            var flag;
+            $.ajax({
+                url:'data/1.txt',
+                success:function (msg) {
+                   flag=true;
+                   callback(true,msg);
+                },
+                error:function (error) {
+                    flag=false;
+                    callback(false,error);
+                }
+            })
+
+        }
+        fn((state,msg)=>{
+            state?alert('恭喜你'+msg):alert('错了'+msg);
+        });
+
+
+
+
+    </script>
+</body>
+</html>

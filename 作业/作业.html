@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			function C1(name) {
+				if(name) {
+					this.name = name;
+				}
+			}
+			function C2(name) {
+				this.name = name;
+			}
+
+			function C3(name) {
+				this.name = name || "John";
+			}
+
+			C1.prototype.name = "Tom";
+			// var a=new C1().name;
+			// console.log(a);
+			C2.prototype.name = "Tom";
+			C3.prototype.name = "John";
+
+			console.log(new C1().name);//"Tom"
+			console.log(new C2().name);//undefined
+			console.log(new C3().name);//"John"
+			
+			/*
+				构造函数
+				
+				原型
+				
+				原型链
+				
+				继承
+				
+				new关键字
+				
+				
+			*/
+			/*
+				hasOwnProperty 检测一个属性是否是某个对象私有的，
+				是私有的,返回true,否则返回false
+				
+
+			*/
+			console.log(Object.prototype)
+			function A(){
+				this.d = 1;
+			}
+			A.prototype.x = 2;
+
+			var oA = new A();
+			
+			var arr = [];
+			//Array.isArray();
+			//alert(arr.constructor === Array);
+			
+			var obj = {
+				a:1,
+				b:2
+			};
+			//给对象的属性添加约束
+			Object.defineProperty(obj,'goudan',{
+				configurable:false,//属性是否可删除
+				writable:false,//'属性是否可写入',
+				enumerable:false,//属性是否可遍历
+				value:"hello"//属性的默认值
+			});
+			//vue双向数据绑定的原理就借助这个实现的
+			//get和set访问器
+			Object.defineProperty(obj,'a',{
+				//在你获取属性值的时候默认调用
+				get:function(){
+					console.log("get方法被调用了");
+					return 100;
+				},
+				//在你设置属性值的时候默认调用
+				set:function(newValue) {
+					console.log("set被调用了,"+newValue);
+				}
+			});
+			
+			//alert(obj.a);
+			obj.a = 0;
+			//obj.a = 20;
+			//delete obj.a;
+//			for(var k in obj) {
+//				console.log(k,obj[k]);
+//			}
+			console.log(obj);
+			
+			
+		</script>
+	</body>
+
+</html>
