@@ -1,0 +1,24 @@
+/* pages/animate/animate.wxss */
+.wrap view {
+  width: 100rpx;
+  height: 100rpx;
+  background: #f00;
+  position: absolute;
+  top: 20%;
+   right: 0; 
+   margin-right: -50rpx; 
+}
+view view.animate {
+  animation: test 1s 1;
+  /* right: 0; */
+   margin-right:0rpx; 
+}
+@keyframes test {
+  0%{
+    transform: translate(0,0);
+  }
+  100%{
+    transform: translate(-50rpx,0);
+  }
+  
+}

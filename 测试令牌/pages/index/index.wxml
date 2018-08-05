@@ -1,0 +1,7 @@
+<button type='primary' style='margin-bottom:30rpx' bindtap='getToken'>生成令牌</button>
+
+<button type='primary' style='margin-bottom:30rpx' bindtap='saveAddress'>保存地址</button>
+
+<button type='primary' style='margin-bottom:30rpx' bindtap='testToken'>测试令牌</button>
+
+

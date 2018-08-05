@@ -1,0 +1,3 @@
+<view class='wrap'>
+  <view catchtap='add' class='{{flag?"animate":""}}'></view>
+</view>
